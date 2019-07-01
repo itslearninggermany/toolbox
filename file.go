@@ -14,18 +14,18 @@ type File struct {
 // only the creater can read.
 func (a *File) StoreAStringInAFile(filename, content string) (err error) {
 	contentInByte := []byte(content)
-	return ioutil.WriteFile(a.Path+filename, contentInByte, 0700)
+	return ioutil.WriteFile(a.Mainpath+filename, contentInByte, 0700)
 }
 
 func (a *File) GetContentOfAFile(filename string) (content string, err error) {
-	bytes, err := ioutil.ReadFile(a.Path + filename)
+	bytes, err := ioutil.ReadFile(a.Mainpath + filename)
 	content = string(bytes)
 	return
 }
 
 // Rturns all Files with the ending of suffix. If suffix is nil all filnames will be in the Array
 func (a *File) GetFileFromDir(directory string, suffix interface{}) (allFiles []string, err error) {
-	files, err := ioutil.ReadDir(a.Path + directory)
+	files, err := ioutil.ReadDir(a.Mainpath + directory)
 	var tmp string
 	if suffix != nil {
 		tmp = fmt.Sprint(suffix)
