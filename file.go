@@ -7,7 +7,7 @@ import (
 )
 
 type File struct {
-	Path string
+	Mainpath string
 }
 
 // Creates a file with the content in Mode 0700
